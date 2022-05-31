@@ -1,3 +1,4 @@
+import 'package:book_readers_app/Color/color.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:slide_popup_dialog/slide_popup_dialog.dart' as sliderPopup;
@@ -9,59 +10,116 @@ class login extends StatefulWidget {
   State<login> createState() => _loginState();
 }
 
-enum Gender { unknown, laki, perempuan }
-
 class _loginState extends State<login> {
   late ProgressDialog pr;
 
-  Gender? gender = Gender.unknown;
-  String getGender(Gender? value) {
-    if (value == Gender.laki) {
-      return "Laki-laki";
-    } else if (value == Gender.perempuan) {
-      return "Perempuan";
-    }
-    return "";
-  }
-
-  String namalengkap = '', email = '', password = '';
-  final ctrlnamalengkap = TextEditingController();
-  final ctrlemail = TextEditingController();
-  final ctrlpassword = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    ctrlnamalengkap.dispose();
-    ctrlemail.dispose();
-    ctrlpassword.dispose();
-    super.dispose();
-  }
-
   void _showDialog() {
     sliderPopup.showSlideDialog(
-        context: context,
-        barrierColor: Colors.white.withOpacity(0.5),
-        pillColor: Colors.white,
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage("")),
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: const <Color>[
-                    Colors.redAccent,
-                    Colors.yellowAccent
-                  ])),
-          child: ListView(
-            children: [SingleChildScrollView()],
-          ),
-        ));
+      context: context,
+      barrierColor: Colors.transparent,
+      pillColor: Colors.white,
+      backgroundColor: hijauTua,
+      child: Expanded(
+        child: ListView(
+          children: [
+            Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: hijauTerang,
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      labelStyle: TextStyle(
+                        color: hijauTerang,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      labelStyle: TextStyle(
+                        color: hijauTerang,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  child: TextButton(
+                    onPressed: () {
+                      pr.show();
+                      Future.delayed(Duration(seconds: 3)).then((value) {
+                        pr.hide().whenComplete(() {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        });
+                      });
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                        color: hijauTua,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              // children: <Widget>[
+              //   Container(
+              //     height: MediaQuery.of(context).size.height / 2,
+              //     width: 380,
+              //     child: TextField(
+              //       cursorColor: Color.fromARGB(255, 176, 205, 176),
+              //       maxLines: 1,
+              //       decoration: InputDecoration(
+              //         enabledBorder: OutlineInputBorder(
+              //             borderSide: BorderSide(color: Colors.transparent)),
+              //         focusedBorder: OutlineInputBorder(
+              //           borderSide: BorderSide(color: Colors.transparent),
+              //         ),
+              //         hintText: "Enter a Username",
+              //         prefixIcon: Icon(
+              //           Icons.people,
+              //           color: Color.fromARGB(255, 114, 111, 111),
+              //         ),
+              //         hintStyle: TextStyle(
+              //           color: Colors.black.withOpacity(0.5),
+              //           fontSize: null,
+              //           fontWeight: FontWeight.w400,
+              //           fontStyle: FontStyle.normal,
+              //         ),
+              //         fillColor: Colors.white.withOpacity(0.3),
+              //         filled: true,
+              //       ),
+              //     ),
+              //   ),
+              // ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
