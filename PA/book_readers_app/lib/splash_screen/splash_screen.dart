@@ -1,3 +1,4 @@
+import 'package:book_readers_app/landing_page/landingPage.dart';
 import 'package:book_readers_app/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -50,7 +51,7 @@ class _splash_screenState extends State<splash_screen> {
       duration: 3000,
       splashTransition: SplashTransition.sizeTransition,
       backgroundColor: Color.fromARGB(255, 255, 211, 89),
-      nextScreen: const login(),
+      nextScreen: const landingPage(),
     );
   }
 }

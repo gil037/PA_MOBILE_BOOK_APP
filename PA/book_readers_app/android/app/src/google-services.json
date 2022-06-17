@@ -1,0 +1,39 @@
+{
+    "project_info": {
+      "project_number": "624411331196",
+      "project_id": "pa-mobile-f400c",
+      "storage_bucket": "pa-mobile-f400c.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:624411331196:android:7de400fcae7a2300cf97f9",
+          "android_client_info": {
+            "package_name": "com.example.book_readers_app"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "624411331196-l9qo876usct7o84lmsbkb37t4na9pgh0.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyD0CIchDs2d6E04pNr4oTF84pC9aNqZzNc"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "624411331196-l9qo876usct7o84lmsbkb37t4na9pgh0.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
