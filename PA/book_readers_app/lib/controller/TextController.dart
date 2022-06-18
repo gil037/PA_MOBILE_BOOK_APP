@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 class RegisterController extends GetxController {
   var namaDepan = ''.obs;
   var namaBelakang = ''.obs;
-  var username = ''.obs;
+  var email = ''.obs;
   var password = ''.obs;
   var konfirmasiPassword = ''.obs;
   var nomorTelepon = ''.obs;
 
   final namaDepanCtrl = TextEditingController();
   final namaBelakangCtrl = TextEditingController();
-  final usernameCtrl = TextEditingController();
+  final emailCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
   final konfirmasiPasswordCtrl = TextEditingController();
   final nomorTeleponCtrl = TextEditingController();
@@ -19,22 +19,10 @@ class RegisterController extends GetxController {
   onPressed() {
     namaDepan = namaDepanCtrl.text.obs;
     namaBelakang = namaBelakangCtrl.text.obs;
-    username = usernameCtrl.text.obs;
+    email = emailCtrl.text.obs;
     password = passwordCtrl.text.obs;
     konfirmasiPassword = konfirmasiPasswordCtrl.text.obs;
     nomorTelepon = nomorTeleponCtrl.text.obs;
-  }
-
-  @override
-  void onClose() {
-    namaDepanCtrl.dispose();
-    namaBelakangCtrl.dispose();
-    usernameCtrl.dispose();
-    passwordCtrl.dispose();
-    konfirmasiPasswordCtrl.dispose();
-    nomorTeleponCtrl.dispose();
-    print("Text Controller sudah terhapus");
-    super.onClose();
   }
 }
 
@@ -51,4 +39,11 @@ class tulisController extends GetxController {
   TextEditingController IsiCtrl = TextEditingController();
   // ignore: non_constant_identifier_names
   TextEditingController AuthorCtrl = TextEditingController();
+}
+
+class DukunganController extends GetxController {
+  // ignore: non_constant_identifier_names
+  TextEditingController KomentarCtrl = TextEditingController();
+  // ignore: non_constant_identifier_names
+  TextEditingController SaranCtrl = TextEditingController();
 }

@@ -386,7 +386,12 @@ class _landingPageState extends State<landingPage> {
                   ),
                 ),
                 onPressed: () {
-                  Get.to(login());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) {
+                      return const login();
+                    }),
+                  );
                 },
                 child: Text(
                   "Bergabung secara Gratis",

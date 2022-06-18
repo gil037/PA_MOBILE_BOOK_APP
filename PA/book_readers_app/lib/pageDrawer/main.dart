@@ -1,13 +1,8 @@
-import 'package:book_readers_app/login/login.dart';
 import 'package:book_readers_app/page/homePage.dart';
-import 'package:book_readers_app/splash_screen/splash_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
   runApp(
       ChangeNotifierProvider(create: (context) => DarkMode(), child: MyApp()));
 }
@@ -22,9 +17,8 @@ class MyApp extends StatelessWidget {
     final themeMode = Provider.of<DarkMode>(context);
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const login(),
-      theme: themeMode.darkMode ? mainTheme : darkTheme,
+      home: const homePage(),
+      theme: themeMode.darkMode ? darkTheme : mainTheme,
     );
   }
 }

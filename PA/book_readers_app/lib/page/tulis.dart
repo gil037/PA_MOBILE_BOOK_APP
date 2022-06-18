@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:book_readers_app/Color/color.dart';
+import 'package:book_readers_app/controller/Firebase.dart';
 import 'package:book_readers_app/controller/TextController.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
@@ -98,7 +100,10 @@ class _tulisState extends State<tulis> {
   final FocusNode _judulFocus = FocusNode();
   final FocusNode _isiFocus = FocusNode();
   final FocusNode _AuthorFocus = FocusNode();
-  tulisController tc = tulisController();
+
+  FirestoreController fsc = Get.find();
+  tulisController tc = Get.put(tulisController());
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -371,7 +376,28 @@ class _tulisState extends State<tulis> {
                                   color: Colors.white,
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                fsc.books.value.add({
+                                  'Judul': tc.JudulCtrl.text,
+                                  'Deskripsi': tc.DeskripsiCtrl.text,
+                                  'Author': tc.AuthorCtrl.text,
+                                  'Isi': tc.IsiCtrl.text,
+                                });
+                                final snackBar = SnackBar(
+                                  content:
+                                      const Text('Cerita berhasil dikirim'),
+                                  action: SnackBarAction(
+                                    label: 'Undo',
+                                    onPressed: () {
+                                      // Some code to undo the change.
+                                    },
+                                  ),
+                                );
+                                tc.JudulCtrl.clear();
+                                tc.DeskripsiCtrl.clear();
+                                tc.AuthorCtrl.clear();
+                                tc.IsiCtrl.clear();
+                              },
                             ),
                           ),
                           Container(

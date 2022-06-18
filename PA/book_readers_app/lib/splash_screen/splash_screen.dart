@@ -1,5 +1,4 @@
 import 'package:book_readers_app/landing_page/landingPage.dart';
-import 'package:book_readers_app/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
@@ -34,16 +33,14 @@ class _splash_screenState extends State<splash_screen> {
                   color: Color.fromARGB(255, 114, 111, 111)),
             ),
           ),
-          Container(
-            child: Text(
-              '         Tempat Cerita Menjadi Hidup\nJadilah bagian dari Komunitas Global',
-              style: TextStyle(
-                  fontFamily: 'Atma',
-                  fontWeight: FontWeight.w600,
-                  wordSpacing: 2.0,
-                  fontSize: 15,
-                  color: Color.fromARGB(255, 237, 123, 107)),
-            ),
+          Text(
+            '         Tempat Cerita Menjadi Hidup\nJadilah bagian dari Komunitas Global',
+            style: TextStyle(
+                fontFamily: 'Atma',
+                fontWeight: FontWeight.w600,
+                wordSpacing: 2.0,
+                fontSize: 15,
+                color: Color.fromARGB(255, 237, 123, 107)),
           ),
         ],
       ),

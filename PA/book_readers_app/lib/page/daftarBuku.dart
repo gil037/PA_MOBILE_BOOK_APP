@@ -13,7 +13,7 @@ class _favoritState extends State<favorit> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('favorit'),
+        child: Text('Daftar Buku Saya'),
       ),
     );
   }
