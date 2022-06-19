@@ -7,9 +7,11 @@ import 'package:book_readers_app/page/tulis.dart';
 import 'package:book_readers_app/page/utama.dart';
 import 'package:book_readers_app/pageDrawer/Dukungan.dart';
 import 'package:book_readers_app/pageDrawer/Theme.dart';
+import 'package:book_readers_app/pageDrawer/pemberitahuan.dart';
 import 'package:book_readers_app/pageDrawer/tentangAplikasi.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../pageDrawer/kebijakanPrivasi.dart';
@@ -150,12 +152,12 @@ class _SecondPageState extends State<homePage> {
                 subtitle: const Text("Pemberitahuan !"),
                 tileColor: const Color.fromARGB(255, 246, 246, 233),
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (_) {
-                  //     return pemberitahuan();
-                  //   }),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) {
+                      return Pemberitahuan();
+                    }),
+                  );
                 },
               ),
               ListTile(

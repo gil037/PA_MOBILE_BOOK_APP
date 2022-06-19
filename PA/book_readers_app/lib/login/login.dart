@@ -408,12 +408,8 @@ class _loginState extends State<login> {
                     fillColor: Colors.white.withOpacity(0.3),
                     filled: true,
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Email anda kosong';
-                    }
-                    return null;
-                  },
+                  validator: (value) =>
+                      value!.isEmpty ? 'Email tidak boleh kosong' : null,
                 ),
               ),
               Container(
@@ -441,12 +437,8 @@ class _loginState extends State<login> {
                     fillColor: Colors.white.withOpacity(0.3),
                     filled: true,
                   ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Password anda Kosong';
-                    }
-                    return null;
-                  },
+                  validator: (value) =>
+                      value!.isEmpty ? 'Password tidak boleh kosong' : null,
                 ),
               ),
               Container(
@@ -460,20 +452,30 @@ class _loginState extends State<login> {
                     ),
                   ),
                   onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => login()),
+                      );
+                    }
+                    auth
+                        .signInWithEmailAndPassword(
+                            email: rc.emailCtrl.text,
+                            password: rc.passwordCtrl.text)
+                        .then((_) {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => homePage()));
+                    });
                     rc.emailCtrl.clear();
                     rc.passwordCtrl.clear();
-                    try {
-                      auth
-                          .signInWithEmailAndPassword(
-                              email: rc.emailCtrl.text,
-                              password: rc.passwordCtrl.text)
-                          .then((_) {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => homePage()));
-                      });
-                    } catch (e) {
-                      print(e);
-                    }
+                    final snackBar = SnackBar(
+                      content: Text('Login Anda Berhasil !'),
+                      action: SnackBarAction(
+                        label: 'OKE',
+                        onPressed: () {},
+                      ),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   child: Text(
                     "LOGIN",

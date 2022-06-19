@@ -1,4 +1,5 @@
 import 'package:book_readers_app/Color/color.dart';
+import 'package:book_readers_app/controller/Firebase.dart';
 import 'package:book_readers_app/controller/TextController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +13,7 @@ class dukungan extends StatefulWidget {
 }
 
 class _dukunganState extends State<dukungan> {
-  // FirestoreController fsc = Get.put(FirestoreController());
+  FirestoreController fsc = Get.put(FirestoreController());
   DukunganController dc = Get.put(DukunganController());
 
   @override
@@ -51,6 +52,7 @@ class _dukunganState extends State<dukungan> {
             Container(
               margin: EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 10.0),
               child: TextFormField(
+                controller: dc.KomentarCtrl,
                 maxLines: 4,
                 // controller: tc.komenCtrl,
                 decoration: InputDecoration(
@@ -89,7 +91,7 @@ class _dukunganState extends State<dukungan> {
               margin: EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 10.0),
               child: TextFormField(
                 maxLines: 4,
-                // controller: tc.saranCtrl,
+                controller: dc.SaranCtrl,
                 decoration: InputDecoration(
                   border: UnderlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -123,10 +125,10 @@ class _dukunganState extends State<dukungan> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20))),
                 onPressed: () {
-                  // fsc.dukungan.value.add({
-                  //   "komentar": dc.KomentarCtrl.text,
-                  //   "saran": dc.SaranCtrl.text,
-                  // });
+                  fsc.dukungan.value.add({
+                    "komentar": dc.KomentarCtrl.text,
+                    "saran": dc.SaranCtrl.text,
+                  });
                   CustomAlert(
                       context, "NOTIFIKASI !", "Ulasan Diterima Terima Kasih");
                   dc.KomentarCtrl.clear();

@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const login(),
+      home: const homePage(),
       theme: themeMode.darkMode ? mainTheme : darkTheme,
     );
   }

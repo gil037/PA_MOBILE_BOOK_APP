@@ -46,7 +46,6 @@ class _tulisState extends State<tulis> {
           takePhoto(ImageSource.gallery).then((File? file) {
             setState(() {
               image = file;
-              Navigator.pop(this.context);
             });
           });
         },
@@ -74,7 +73,6 @@ class _tulisState extends State<tulis> {
           takePhoto(ImageSource.gallery).then((File? file) {
             setState(() {
               image = file;
-              Navigator.pop(this.context);
             });
           });
         },
@@ -101,7 +99,7 @@ class _tulisState extends State<tulis> {
   final FocusNode _isiFocus = FocusNode();
   final FocusNode _AuthorFocus = FocusNode();
 
-  FirestoreController fsc = Get.find();
+  FirestoreController fsc = Get.put(FirestoreController());
   tulisController tc = Get.put(tulisController());
 
   final _formKey = GlobalKey<FormState>();
@@ -183,7 +181,7 @@ class _tulisState extends State<tulis> {
                                 ),
                                 TextFormField(
                                   maxLines: 2,
-                                  maxLength: 70,
+                                  maxLength: 500,
                                   controller: tc.DeskripsiCtrl,
                                   focusNode: _deskripsiFocus,
                                   onFieldSubmitted: (value) {
@@ -393,10 +391,15 @@ class _tulisState extends State<tulis> {
                                     },
                                   ),
                                 );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                                 tc.JudulCtrl.clear();
                                 tc.DeskripsiCtrl.clear();
                                 tc.AuthorCtrl.clear();
                                 tc.IsiCtrl.clear();
+                                image!.delete().then((value) {
+                                  print('image deleted');
+                                });
                               },
                             ),
                           ),

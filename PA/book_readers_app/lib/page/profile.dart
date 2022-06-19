@@ -34,8 +34,12 @@ class _profileState extends State<profile> {
                     SizedBox(height: 40.0),
                     Center(
                       child: CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            'https://i.pinimg.com/originals/2f/d8/3e/2fd83e5a7d7b76cd846365796cd979bc.png'),
+                        backgroundColor: Colors.grey,
+                        child: Icon(
+                          color: Colors.white,
+                          Icons.person,
+                          size: 150.0,
+                        ),
                         radius: 100,
                       ),
                     ),
