@@ -202,7 +202,19 @@ class _utamaState extends State<Utama> {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(builder: (_) {
-                                                return const Detail();
+                                                return GestureDetector(
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder: (_) => Detail(
+                                                          Judul: e.get('Judul'),
+                                                          Isi: e.get('Isi'),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
                                               }),
                                             );
                                           },
@@ -219,7 +231,19 @@ class _utamaState extends State<Utama> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(builder: (_) {
-                                              return const Detail();
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (_) => Detail(
+                                                        Judul: e.get('Judul'),
+                                                        Isi: e.get('Isi'),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              );
                                             }),
                                           );
                                         },
